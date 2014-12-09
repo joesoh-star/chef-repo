@@ -8,14 +8,14 @@
 #
 node[:deploy].each do |application, deploy|
   app_root = "#{deploy[:deploy_to]}/current/wp-content/cache"
-  execute "chmod -R g+rw #{wp-cache}" do
+  execute "chmod -R g+rw #{app_root}" do
   end
 #
   app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
-  execute "chmod -R g+rw #{wp-uploads}" do
+  execute "chmod -R g+rw #{app_root}" do
   end
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
-  execute "chmod g+rw #{wp-content-config}" do
+  execute "chmod g+rw #{app_root}" do
   end
 end
