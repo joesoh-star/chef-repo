@@ -17,6 +17,6 @@ node[:deploy].each do |application, deploy|
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
   file  "#{app_root}" do
-	mode '0775'     
+	mode '0665'     
   end
 end
