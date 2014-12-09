@@ -19,4 +19,13 @@ node[:deploy].each do |application, deploy|
   file  "#{app_root}" do
 	mode '0664'     
   end
+
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/debug.log"
+  file  "#{app_root}" do
+	owner 'www-data'
+	group 'www-data'
+	mode '0664'     
+	action :create
+  end
+
 end
