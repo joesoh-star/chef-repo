@@ -16,6 +16,7 @@ node[:deploy].each do |application, deploy|
   end
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
-  execute "chmod g+rw #{app_root}" do
+  file  "#{app_root}" do
+	mode '0775'     
   end
 end
