@@ -1,4 +1,4 @@
-#
+##
 # Cookbook Name:: my_cookbook
 # Recipe:: default
 #
