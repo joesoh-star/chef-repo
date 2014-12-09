@@ -7,11 +7,15 @@
 # All rights reserved - Do Not Redistribute
 #
 node[:deploy].each do |application, deploy|
-  app_root = "#{deploy[:deploy_to]}/current/wp-content/cache"
-  execute "chmod -R g+rw #{app_root}" do
+  wp-cache = "#{deploy[:deploy_to]}/current/wp-content/cache"
+  execute "chmod -R g+rw #{wp-cache}" do
   end
 #
-  app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
-  execute "chmod -R g+rw #{app_root}" do
+  wp-uploads = "#{deploy[:deploy_to]}/current/wp-content/uploads"
+  execute "chmod -R g+rw #{wp-uploads}" do
+  end
+
+  wp-content-config = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
+  execute "chmod g+rw #{wp-content-config}" do
   end
 end
