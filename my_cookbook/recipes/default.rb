@@ -28,4 +28,14 @@ node[:deploy].each do |application, deploy|
 	action :create
   end
 
+#
+#Enable cache for beta and production ENV
+#
+  env "devops" do
+    cookbook_file "wp-cache-config.php" do
+      path "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
+      action :create
+    end
+  end
+
 end
