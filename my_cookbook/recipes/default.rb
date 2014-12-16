@@ -15,10 +15,10 @@ node[:deploy].each do |application, deploy|
   execute "chmod -R g+rw #{app_root}" do
   end
 
-  app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
-  file  "#{app_root}" do
-	mode '0664'     
-  end
+#  app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
+#  file  "#{app_root}" do
+#	mode '0664'     
+#  end
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/debug.log"
   file  "#{app_root}" do
@@ -36,7 +36,8 @@ node[:deploy].each do |application, deploy|
     cookbook_file "wp-cache-config.php" do
       owner "www-data"
       group "www-data"
-      path "/srv/www/propwall/current/wp-content/test.txt"
+      mode "0664"
+      path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
     end
 #  end
 
