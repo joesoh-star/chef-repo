@@ -31,12 +31,13 @@ node[:deploy].each do |application, deploy|
 #
 #Enable cache for beta and production ENV
 #
-  env "devops" do
-    cookbook_file "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php" do
+# "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php" 
+#  env "devops" do
+    cookbook_file "wp-cache-config.php" do
       owner "www-data"
       group "www-data"
-      source "wp-cache-config.php"
+      path "/srv/www/propwall/current/wp-content/test.txt"
     end
-  end
+#  end
 
 end
