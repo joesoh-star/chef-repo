@@ -1,18 +1,3 @@
-Skip to content
- This repository
-Explore
-Gist
-Blog
-Help
-joesoh-star joesoh-star
- 
-114  Watch 
-  Star 598
- Fork 721aws/opsworks-cookbooks
- branch: release-chef-1…  opsworks-cookbooks/mod_php5_apache2/specs/default_spec.rb
-ujuettnerujuettner on Aug 21 Check PHP DB packages only if DB type is given.
-1 contributor
-72 lines (67 sloc)  1.983 kb RawBlameHistory   
 require "minitest/spec"
 
 describe_recipe "mod_php5_apache2::default" do
@@ -23,6 +8,7 @@ describe_recipe "mod_php5_apache2::default" do
     packages = case node[:platform_family]
                when "debian"
                 [
+                  "php5-mysqlnd",
                   "php5-intl",
                   "php5-xsl",
                   "php5-curl",
@@ -43,6 +29,7 @@ describe_recipe "mod_php5_apache2::default" do
                 ]
               when "rhel"
                 [
+                  "php-mysqlnd",
                   "php-intl",
                   "php-xml",
                   "php-common",
