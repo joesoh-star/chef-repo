@@ -8,6 +8,7 @@ describe_recipe "mod_php5_apache2::default" do
     packages = case node[:platform_family]
                when "debian"
                 [
+                  "php5-intl",
                   "php5-xsl",
                   "php5-curl",
                   "php5-xmlrpc",
