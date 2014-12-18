@@ -8,8 +8,6 @@ describe_recipe "mod_php5_apache2::default" do
     packages = case node[:platform_family]
                when "debian"
                 [
-                  "php5-mysqlnd",
-                  "php5-intl",
                   "php5-xsl",
                   "php5-curl",
                   "php5-xmlrpc",
@@ -29,8 +27,6 @@ describe_recipe "mod_php5_apache2::default" do
                 ]
               when "rhel"
                 [
-                  "php-mysqlnd",
-                  "php-intl",
                   "php-xml",
                   "php-common",
                   "php-xmlrpc",
@@ -56,7 +52,7 @@ describe_recipe "mod_php5_apache2::default" do
         when "debian"
           packages << "php5-mysqlnd"
         when "rhel"
-          packages << "php-mysqlnd"
+          packages << "php-mysql"
         end
       when "postgresql"
         case node[:platform_family]
