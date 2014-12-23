@@ -1,9 +1,9 @@
-
-# Author:: Caroline Fenlon <carfenlon@gmail.com>
-# Cookbook Name:: logentries
+#
+# Author:: Joe Heung <joe.heung@logentries.com>
+# Cookbook Name:: le_chef
 # Recipe:: default
 #
-# Copyright 2011 Logentries, JLizard
+# Copyright 2014 Logentries, JLizard
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,12 +16,32 @@
 # limitations under the License.
 #
 
-execute "echo 'deb http://rep.logentries.com/ maverick main' >/etc/apt/sources.list.d/logentries.list"
-execute "gpg --keyserver pgp.mit.edu --recv-keys C43C79AD && gpg -a --export C43C79AD | apt-key add -"
-execute "apt-get update"
-execute "apt-get install --yes logentries"
-execute "le register --user-key #{node[:le][:userkey]} --name='#{node[:le][:hostname]}'"
-execute "apt-get install --yes -qq logentries-daemon"
+if platform_family?('rhel')
+  yum_repository 'logentries' do
+    description 'Logentries repo'
+    baseurl 'http://rep.logentries.com/rh/\$basearch'
+    gpgkey 'http://rep.logentries.com/RPM-GPG-KEY-logentries'
+    action :create
+  end
+end
+
+if platform_family?('debian')
+  apt_repository 'logentries' do
+    uri          'http://rep.logentries.com/'
+    distribution node['lsb']['codename']
+    components   ['main']
+    keyserver    'pgp.mit.edu'
+    key          'C43C79AD'
+  end
+end
+
+package 'logentries'
+
+execute "le register --user-key #{node['le']['account_key']} --name='#{node['le'][:hostname]}'" do
+  not_if 'le whoami'
+end
+
+package 'logentries-daemon'
 
 class Chef::Recipe
   include FollowLogs
@@ -31,4 +51,7 @@ end
 follow_logs()
 
 # Start the service
-execute "service logentries restart"
+service 'logentries' do
+  supports :stop => true, :start => true, :restart => true
+  action [ :restart ]
+end
