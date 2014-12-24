@@ -1,0 +1,5 @@
+DEPENDENCIES
+  aws (>= 2.5.0)
+
+GRAPH
+  aws (2.5.0)
