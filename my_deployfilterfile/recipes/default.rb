@@ -5,7 +5,7 @@ node[:deploy].each do |application, deploy|
 directory "#{deploy[:deploy_to]}/current/wp-content/uploads/filters" do
 owner 'deploy'
 group 'www-data'
-mode '0550'
+mode '0770'
 action :create
 end
 
@@ -16,7 +16,7 @@ aws_s3_file "#{deploy[:deploy_to]}/current/wp-content/uploads/filters/blacklist.
   aws_secret_access_key node['my_deployfilterfile'][:custom_secret_key]
   owner 'deploy'
   group 'www-data'
-  mode '0550'
+  mode '0770'
 end
 
 
@@ -27,7 +27,7 @@ aws_s3_file "#{deploy[:deploy_to]}/current/wp-content/uploads/filters/spam.txt" 
   aws_secret_access_key node['my_deployfilterfile'][:custom_secret_key]
   owner 'deploy'
   group 'www-data'
-  mode '0550'
+  mode '0770'
 end
 
 aws_s3_file "#{deploy[:deploy_to]}/current/wp-content/uploads/filters/spammer.txt" do
@@ -37,7 +37,7 @@ aws_s3_file "#{deploy[:deploy_to]}/current/wp-content/uploads/filters/spammer.tx
   aws_secret_access_key node['my_deployfilterfile'][:custom_secret_key]
   owner 'deploy'
   group 'www-data'
-  mode '0550'
+  mode '0770'
 end
 
 end
