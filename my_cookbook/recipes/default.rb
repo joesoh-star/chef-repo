@@ -53,11 +53,11 @@ node[:deploy].each do |application, deploy|
 #  end
 
 #install project vendors
-composer_project "#{deploy[:deploy_to]}/current do
-    dev false
-    quiet true
-    prefer_dist false
-    action :install
-end
+#composer_project "#{deploy[:deploy_to]}/current" do
+#    dev false
+#    quiet true
+#    prefer_dist false
+#    action :install
+#end
 
 end
