@@ -26,12 +26,19 @@ node[:deploy].each do |application, deploy|
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/debug.log"
   file  "#{app_root}" do
-	owner 'www-data'
+	owner 'deploy'
 	group 'www-data'
 	mode '0664'     
 	action :create
   end
 
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify/min/config.php"
+  file  "#{app_root}" do
+	owner 'deploy'
+	group 'www-data'
+	mode '0664'     
+	action :create
+  end
 #
 #Enable cache for beta and production ENV
 #
