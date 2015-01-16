@@ -15,6 +15,10 @@ node[:deploy].each do |application, deploy|
   execute "chmod -R g+rw #{app_root}" do
   end
 
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify/cache"
+  execute "chmod -R g+rw #{app_root}" do
+  end
+
 #  app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
 #  file  "#{app_root}" do
 #	mode '0664'     
