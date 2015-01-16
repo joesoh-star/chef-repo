@@ -66,8 +66,6 @@ execute "run-composer" do
  user "deploy"
  group "www-data"
  action :run
-
 end
-=======
 
 end
