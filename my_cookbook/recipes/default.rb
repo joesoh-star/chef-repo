@@ -62,7 +62,7 @@ node[:deploy].each do |application, deploy|
 execute "run-composer" do
  command "composer install --no-dev --prefer-dist "
  cwd  "#{deploy[:deploy_to]}/current"
- owner "deploy"
+ user "deploy"
  group "www-data"
  action :run
 
