@@ -61,7 +61,7 @@ node[:deploy].each do |application, deploy|
 #end
 execute "run-composer" do
  command "composer install --no-dev --prefer-dist "
- action :nothing
+ action :run
 end
 
 end
