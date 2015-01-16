@@ -59,7 +59,7 @@ node[:deploy].each do |application, deploy|
 #    prefer_dist false
 #    action :install
 #end
-<<<<<<< HEAD
+
 execute "run-composer" do
  command "composer install --no-dev --prefer-dist "
  cwd  "#{deploy[:deploy_to]}/current"
@@ -69,6 +69,5 @@ execute "run-composer" do
 
 end
 =======
->>>>>>> devel
 
 end
