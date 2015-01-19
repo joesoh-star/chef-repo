@@ -65,22 +65,4 @@ node[:deploy].each do |application, deploy|
       mode "0664"
       path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
     end
-#  end
-
-#install project vendors
-#composer_project "#{deploy[:deploy_to]}/current" do
-#    dev false
-#    quiet true
-#    prefer_dist false
-#    action :install
-#end
-
-execute "run-composer" do
- command "composer install --no-dev --prefer-dist "
- cwd  "#{deploy[:deploy_to]}/current"
- user "deploy"
- group "www-data"
- action :run
-end
-
 end
