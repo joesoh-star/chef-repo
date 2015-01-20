@@ -10,7 +10,7 @@ node[:deploy].each do |application, deploy|
   app_root = "#{deploy[:deploy_to]}/current/wp-content/cache"
   execute "chmod -R g+rw #{app_root}" do
   end
-#
+
   app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
   execute "chmod -R g+rw #{app_root}" do
   end
@@ -31,10 +31,13 @@ node[:deploy].each do |application, deploy|
     action :create 
   end
 
-#  app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
-#  file  "#{app_root}" do
-#	mode '0664'     
-#  end
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify/min"
+  directory app_root do
+    owner 'deploy'
+    group 'www-data'
+    mode '0775' 
+    action :create 
+  end
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/debug.log"
   file  "#{app_root}" do
@@ -62,6 +65,5 @@ node[:deploy].each do |application, deploy|
       mode "0664"
       path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
     end
-#  end
 
 end
