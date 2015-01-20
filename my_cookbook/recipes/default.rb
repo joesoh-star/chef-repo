@@ -15,6 +15,22 @@ node[:deploy].each do |application, deploy|
   execute "chmod -R g+rw #{app_root}" do
   end
 
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify"
+  directory app_root do
+    owner 'deploy'
+    group 'www-data'
+    mode '0775' 
+    action :create 
+  end
+
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify/cache"
+  directory app_root do
+    owner 'deploy'
+    group 'www-data'
+    mode '0775' 
+    action :create 
+  end
+
 #  app_root = "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
 #  file  "#{app_root}" do
 #	mode '0664'     
@@ -22,12 +38,19 @@ node[:deploy].each do |application, deploy|
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/debug.log"
   file  "#{app_root}" do
-	owner 'www-data'
+	owner 'deploy'
 	group 'www-data'
 	mode '0664'     
 	action :create
   end
 
+  app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify/min/config.php"
+  file  "#{app_root}" do
+	owner 'deploy'
+	group 'www-data'
+	mode '0664'     
+	action :create
+  end
 #
 #Enable cache for beta and production ENV
 #
