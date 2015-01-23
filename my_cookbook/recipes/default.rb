@@ -15,6 +15,10 @@ node[:deploy].each do |application, deploy|
   execute "chmod -R g+rw #{app_root}" do
   end
 
+  app_root = "#{deploy[:deploy_to]}/current"
+  execute "php composer.phar install" do
+  end
+
   app_root = "#{deploy[:deploy_to]}/current/wp-content/plugins/bwp-minify"
   directory app_root do
     owner 'deploy'
