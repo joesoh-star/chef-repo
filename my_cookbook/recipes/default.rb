@@ -66,4 +66,9 @@ node[:deploy].each do |application, deploy|
       path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
     end
 
+#Install Composer
+execute "Install Composer from my_cookbook" do
+ command "composer install --no-dev --prefer-dist"
+end
+
 end
