@@ -68,7 +68,7 @@ node[:deploy].each do |application, deploy|
 
 #Install Composer
 execute "Install Composer from my_cookbook" do
- command "composer install --no-dev --prefer-dist"
+ command "/usr/local/bin/composer install --no-dev --prefer-dist"
 end
 
 end
