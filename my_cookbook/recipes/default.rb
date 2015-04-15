@@ -66,8 +66,13 @@ node[:deploy].each do |application, deploy|
       path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
     end
 
+<<<<<<< HEAD
 #Install Composer
 #install project vendors
+=======
+
+#install Composer project vendors
+>>>>>>> 790593353fd51474d70e39a0838431f1a79f383e
 composer_project "#{deploy[:deploy_to]}/current" do
     dev false
     quiet true
