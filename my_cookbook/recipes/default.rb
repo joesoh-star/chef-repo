@@ -67,10 +67,6 @@ node[:deploy].each do |application, deploy|
     end
 
 #Install Composer
-# app_root = "#{deploy[:deploy_to]}
-# execute "Install Composer from my_cookbook" do
-# command "/usr/local/bin/composer install -d "#{deploy[:deploy_to]}/current" --no-dev --prefer-dist"
-#end
 #install project vendors
 composer_project "#{deploy[:deploy_to]}/current" do
     dev false
