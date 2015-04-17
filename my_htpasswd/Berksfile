@@ -1,0 +1,1 @@
+cookbook 'htpasswd', '~> 0.2.4'
