@@ -26,7 +26,7 @@ node[:deploy].each do |application, deploy|
     action :create 
   end
 
-  app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage/frameworki/views"
+  app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework/views"
   directory app_root do
     owner 'deploy'
     group 'www-data'
