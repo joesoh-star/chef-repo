@@ -25,7 +25,7 @@ node[:deploy].each do |application, deploy|
     action :create 
   end
 
-  app_root = "/srv/www/classifieds_carsifu/current/automania-v2/wp-content/uploads"
+  app_root = "/srv/www/carsifu/current/automania-v2/wp-content/uploads"
   directory app_root do
     owner 'deploy'
     group 'www-data'
