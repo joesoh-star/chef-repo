@@ -17,4 +17,12 @@ node[:deploy].each do |application, deploy|
   end
 
 
+  app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework"
+  directory app_root do
+    owner 'deploy'
+    group 'www-data'
+    mode '0775' 
+    action :create 
+  end
+
 end
