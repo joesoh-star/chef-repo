@@ -8,16 +8,7 @@
 #
 node[:deploy].each do |application, deploy|
 
-  app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs"
-  directory app_root do
-    owner 'deploy'
-    group 'www-data'
-    mode '0775' 
-    action :create 
-  end
-
-
-  app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework"
+  app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage"
   directory app_root do
     owner 'deploy'
     group 'www-data'
