@@ -14,7 +14,6 @@ node[:deploy].each do |application, deploy|
     group 'www-data'
     mode '0775' 
     recursive true
-    action :create 
   end
 
 
