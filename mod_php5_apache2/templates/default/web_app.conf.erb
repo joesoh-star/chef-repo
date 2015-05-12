@@ -14,7 +14,7 @@
 
   <% if @params[:name] == 'carsifu'-%>
 # Custom - Add redirection for carsifu classifieds 
-  <Directory <%= @params[:docroot] %>/classifieds>
+  <Directory <%= @params[:docroot] %>classifieds>
     RewriteEngine on
     RewriteRule ^(.*)$ http://develop-v2-classifieds.carsifu.my/$1 [P]
   </Directory>
