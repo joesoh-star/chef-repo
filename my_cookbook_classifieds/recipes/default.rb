@@ -21,4 +21,9 @@ execute "chmo-775" do
   action :run
 end
 
+execute "php5enmod mcrypt" do
+  command "php5enmod mcrypt"
+  action :run
+end
+
 end
