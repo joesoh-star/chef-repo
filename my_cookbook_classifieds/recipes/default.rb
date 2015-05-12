@@ -16,6 +16,11 @@ node[:deploy].each do |application, deploy|
     recursive true
   end
 
+execute "chmo-775" do
+  command "chmod 775  /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs"
+  command "chmod a+x  /srv/www/classifieds_carsifu/releases/20150512063711/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
+  action :run
+end
 
   app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework"
   directory app_root do
