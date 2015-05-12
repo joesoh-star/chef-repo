@@ -5,3 +5,4 @@ cookbook "system", ">=0.3.3"
 cookbook 'logentries', '>= 0.1.3'
 cookbook 'composer', '~> 2.0.0'
 cookbook 'htpasswd', '~> 0.2.4'
+cookbook 'php-mcrypt', '~> 1.0.0'
