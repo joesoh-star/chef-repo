@@ -26,4 +26,11 @@ execute "php5enmod mcrypt" do
   action :run
 end
 
+# add htpasswd user.
+htpasswd "/etc/apache2/.htpassword" do
+  user <%= node[:apache][:htpasswd_user] %>
+  password <%= node[:apache][:htpasswd_passwd] %>
+  type "sha1"
+end
+
 end
