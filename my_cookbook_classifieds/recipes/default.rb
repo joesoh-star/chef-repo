@@ -22,7 +22,7 @@ execute "chmo-775" do
 end
 
 execute "php5enmod mcrypt" do
-  command "php5enmod mcrypt"
+  command "php5enmod mcrypt; service apache2 restart"
   action :run
 end
 
