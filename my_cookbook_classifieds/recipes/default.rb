@@ -30,8 +30,8 @@ end
 include_recipe "htpasswd::default"
 
 htpasswd "/etc/apache2/.htpassword" do
-  user <%= node[:apache][:htpasswd_user] %>
-  password <%= node[:apache][:htpasswd_passwd] %>
+  user node[:apache][:htpasswd_user] 
+  password node[:apache][:htpasswd_passwd] 
   type "sha1"
   action :overwrite
 end
