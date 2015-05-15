@@ -31,7 +31,8 @@ end
 
 #install project vendors
 composer_project "#{deploy[:deploy_to]}/current" do
-    dev "node[:composer][:dev]"
+#    dev "node[:composer][:dev]"
+    dev true
     quiet true
     prefer_dist false
     action :install
