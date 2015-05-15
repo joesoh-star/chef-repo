@@ -17,7 +17,7 @@ node[:deploy].each do |application, deploy|
   end
 
 execute "chmo-775" do
-  command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework/cache; chmod 775  /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework/sessions; chmod 775  /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework/views; chmod 775  /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs; chmod a+x  /srv/www/classifieds_carsifu/current/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
+  command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs; chmod a+x  /srv/www/classifieds_carsifu/current/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
   action :run
 end
 
