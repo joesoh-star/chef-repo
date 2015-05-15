@@ -40,7 +40,7 @@ composer_project "#{deploy[:deploy_to]}/current" do
     dev true
     quiet true
     prefer_dist false
-    action :install
+    action :update
 end
 
 end
