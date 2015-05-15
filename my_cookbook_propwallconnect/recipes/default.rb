@@ -36,4 +36,16 @@ htpasswd "/etc/apache2/.htpassword" do
   action :overwrite
 end
 
+template "/root/.composer/auth.json" do
+  source "composer_auth_json.erb"
+end
+
+#install project vendors
+composer_project "#{deploy[:deploy_to]}/current" do
+    dev node[:composer][:dev]
+    quiet true
+    prefer_dist false
+    action :install
+end
+
 end
