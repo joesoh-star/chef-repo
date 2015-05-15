@@ -25,6 +25,11 @@ end
 # install composer.
 include_recipe "composer::default"
 
+directory "/root/.composer" do
+  mode '775'
+  action :create
+end
+
 template "/root/.composer/auth.json" do
   source "composer_auth_json.erb"
 end
