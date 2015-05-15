@@ -17,12 +17,12 @@ node[:deploy].each do |application, deploy|
   end
 
 execute "chmo-775" do
-  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod 775  #{deploy[:deploy_to]}/current/storage/logs; chmod a+x  #{deploy[:deploy_to]}/current/vendor/monolog/monolog/src/Monolog/Handler"
+  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod 775  #{deploy[:deploy_to]}/current/storage/logs"
   action :run
 end
 
 execute "php5enmod mcrypt" do
-  command "php5enmod mcrypt; service apache2 restart"
+  command "php5enmod mcrypt; composer update; service apache2 restart"
   action :run
 end
 
