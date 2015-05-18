@@ -23,8 +23,9 @@ end
 
 #Add php5-mcrypt to cli/conf.d
 execute "add mcrypt symlink" do
-  sudo ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
+  command "ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini"
   action :run
+  not_if { ::File.exists?("/etc/php5/cli/conf.d/20-mcrypt.ini")}
 end
 
 # install composer.
