@@ -22,7 +22,10 @@ execute "chmo-775" do
 end
 
 #Add php5-mcrypt to cli/conf.d
-sudo ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
+execute "add mcrypt symlink" do
+  sudo ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
+  action :run
+end
 
 # install composer.
 include_recipe "composer::default"
