@@ -1,4 +1,4 @@
-# include_recipe 'aws'
+ include_recipe 'aws'
 # aws = data_bag_item("aws", "main")
 
 node[:deploy].each do |application, deploy|
