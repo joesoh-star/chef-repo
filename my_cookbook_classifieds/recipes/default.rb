@@ -9,7 +9,7 @@
 node[:deploy].each do |application, deploy|
 
 execute "php5enmod mcrypt" do
-  command "php5enmod mcrypt; service apache2 restart"
+  command "a2enmod proxy_http; php5enmod mcrypt; service apache2 restart"
   action :run
 end
 
