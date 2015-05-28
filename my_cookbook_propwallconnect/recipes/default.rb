@@ -8,10 +8,10 @@
 #
 node[:deploy].each do |application, deploy|
 
-execute "php5enmod mcrypt" do
-  command "php5enmod mcrypt; composer update; service apache2 restart"
-  action :run
-end
+#execute "php5enmod mcrypt" do
+#  command "php5enmod mcrypt; composer update; service apache2 restart"
+#  action :run
+#end
 
 # add htpasswd user.
 include_recipe "htpasswd::default"
