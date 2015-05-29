@@ -29,9 +29,9 @@ execute "add mcrypt symlink" do
 end
 
 #Add copy App variable to .env file
-template "#{deploy[:deploy_to]}/current/.env" do
-  source "laravel_env.erb"
-end
+#template "#{deploy[:deploy_to]}/current/.env" do
+#  source "laravel_env.erb"
+#end
 
 # install composer.
 include_recipe "composer::default"
