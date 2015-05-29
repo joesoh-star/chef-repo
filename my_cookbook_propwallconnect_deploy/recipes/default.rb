@@ -28,6 +28,11 @@ execute "add mcrypt symlink" do
   not_if { ::File.exists?("/etc/php5/cli/conf.d/20-mcrypt.ini")}
 end
 
+#Add copy App variable to .env file
+template "#{deploy[:deploy_to]}/current/.env" do
+  source "laravel_env.erb"
+end
+
 # install composer.
 include_recipe "composer::default"
 
