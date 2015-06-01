@@ -31,7 +31,7 @@ end
 #Add copy App variable to .env file
 template "#{deploy[:deploy_to]}/current/.env" do
   source "laravel_env.erb"
-  mode 0770
+  mode 0440
   owner deploy[:user]
   group deploy[:group]
   variables(
