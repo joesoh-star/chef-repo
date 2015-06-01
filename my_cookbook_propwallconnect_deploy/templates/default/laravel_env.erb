@@ -1,4 +1,3 @@
-<% node[:deploy][:name][:environment_variables].each do |key, value| %>
-SetEnv "<%= key %>" "<%= value.gsub("\"","\\\"") unless value.nil? %>"
+<% @environment.each do |key, value| %>
+export "<%= key %>"="<%= value %>"
 <% end %>
-

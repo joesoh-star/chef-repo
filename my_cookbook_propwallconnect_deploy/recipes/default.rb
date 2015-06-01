@@ -29,8 +29,16 @@ execute "add mcrypt symlink" do
 end
 
 #Add copy App variable to .env file
+#template "#{deploy[:deploy_to]}/current/.env" do
+#  source "laravel_env.erb"
+#end
 template "#{deploy[:deploy_to]}/current/.env" do
   source "laravel_env.erb"
+  mode 0770
+  variables(
+    :environment => OpsWorks::Escape.escape_double_quotes(deploy[:environment_variables])
+  )
+#  only_if {File.exists?("#{deploy[:deploy_to]}/shared")}
 end
 
 # install composer.
