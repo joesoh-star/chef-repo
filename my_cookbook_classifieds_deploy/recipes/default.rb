@@ -24,6 +24,22 @@ composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
     action :install
 end
 
+execute "php artisan" do
+  command "php artisan migrate"
+  only_if do
+    if node[:opsworks][:layers]['php-app'] && node[:opsworks][:layers]['php-app'][:instances].empty?
+       # no 'online' php servers --> we are the first one booting
+       true
+    elsif node[:opsworks][:instance][:hostname] == node[:opsworks][:layers]['php-app'][:instances].keys.sort.first
+       # we are the first 'online' php-app server
+       true
+    else
+      # we are not the first one
+      false
+    end
+  end
+end
+
 execute "chmo-775" do
   command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs; chmod a+x  /srv/www/classifieds_carsifu/current/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
   action :run
