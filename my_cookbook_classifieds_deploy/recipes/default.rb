@@ -16,12 +16,33 @@ node[:deploy].each do |application, deploy|
     recursive true
   end
 
+#Add copy App variable to .env file
+template "#{deploy[:deploy_to]}/current/.env" do
+  source "laravel_env.erb"
+  mode 0440
+  owner deploy[:user]
+  group deploy[:group]
+  variables(
+    :environment => OpsWorks::Escape.escape_double_quotes(deploy[:environment_variables])
+  )
+end
+
 #install project vendors
 composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
     dev false
     quiet true
     prefer_dist false
     action :install
+end
+
+execute "chown" do
+  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
+  action :run
+end
+
+execute "chmod-775" do
+  command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs; chmod a+x  /srv/www/classifieds_carsifu/current/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
+  action :run
 end
 
 execute "php artisan" do
@@ -38,16 +59,6 @@ execute "php artisan" do
       false
     end
   end
-end
-
-execute "chown" do
-  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
-  action :run
-end
-
-execute "chmod-775" do
-  command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs; chmod a+x  /srv/www/classifieds_carsifu/current/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
-  action :run
 end
 
 end
