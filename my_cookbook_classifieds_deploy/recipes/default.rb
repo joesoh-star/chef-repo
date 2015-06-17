@@ -40,7 +40,12 @@ execute "php artisan" do
   end
 end
 
-execute "chmo-775" do
+execute "chown" do
+  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
+  action :run
+end
+
+execute "chmod-775" do
   command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs; chmod a+x  /srv/www/classifieds_carsifu/current/carsifu-v2/vendor/monolog/monolog/src/Monolog/Handler"
   action :run
 end
