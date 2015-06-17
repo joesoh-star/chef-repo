@@ -46,7 +46,7 @@ execute "chmod-775" do
 end
 
 execute "php artisan" do
-  command "php artisan migrate"
+  command "php #{deploy[:deploy_to]}/current/carsifu-v2 artisan migrate"
   only_if do
     if node[:opsworks][:layers]['php-app'] && node[:opsworks][:layers]['php-app'][:instances].empty?
        # no 'online' php servers --> we are the first one booting
