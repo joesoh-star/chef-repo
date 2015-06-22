@@ -28,11 +28,6 @@ execute "chmo-775" do
   action :run
 end
 
-execute "chown" do
-  command "chown deploy:www-data  #{deploy[:deploy_to]}/current/vendor; chmod 775  #{deploy[:deploy_to]}/current/vendor"
-  action :run
-end
-
 #Add php5-mcrypt to cli/conf.d
 execute "add mcrypt symlink" do
   command "ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini"
