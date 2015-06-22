@@ -65,4 +65,21 @@ composer_project "#{deploy[:deploy_to]}/current" do
     action :update
 end
 
+execute "php artisan" do
+  command "php #{deploy[:deploy_to]}/current/carsifu-v2 artisan migrate"
+  only_if do
+    if node[:opsworks][:layers]['php-app'] && node[:opsworks][:layers]['php-app'][:instances].empty?
+       # no 'online' php servers --> we are the first one booting
+       true
+    elsif node[:opsworks][:instance][:hostname] == node[:opsworks][:layers]['php-app'][:instances].keys.sort.first
+       # we are the first 'online' php-app server
+       true
+    else
+      # we are not the first one
+      false
+    end
+  end
+
+end
+
 end
