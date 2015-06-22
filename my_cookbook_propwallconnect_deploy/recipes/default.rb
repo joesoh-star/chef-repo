@@ -22,7 +22,7 @@ execute "chmo-775" do
 end
 
 execute "chown" do
-  command "chown deply:www-data  #{deploy[:deploy_to]}/current/vendor; chmod 775  #{deploy[:deploy_to]}/current/vendor"
+  command "chown deploy:www-data  #{deploy[:deploy_to]}/current/vendor; chmod 775  #{deploy[:deploy_to]}/current/vendor"
   action :run
 end
 
