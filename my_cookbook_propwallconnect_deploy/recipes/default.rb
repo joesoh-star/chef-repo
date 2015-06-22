@@ -17,12 +17,12 @@ node[:deploy].each do |application, deploy|
   end
 
 execute "chmo-775" do
-  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod 775  #{deploy[:deploy_to]}/current/storage/logs; chmod 775  #{deploy[:deploy_to]}/current/vendor"
+  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod 775  #{deploy[:deploy_to]}/current/storage/logs"
   action :run
 end
 
 execute "chown" do
-  command "chown deply:www-data  #{deploy[:deploy_to]}/current/vendor"
+  command "chown deply:www-data  #{deploy[:deploy_to]}/current/vendor; chmod 775  #{deploy[:deploy_to]}/current/vendor"
   action :run
 end
 
