@@ -16,6 +16,13 @@ node[:deploy].each do |application, deploy|
     recursive true
   end
 
+directory #{deploy[:deploy_to]}/current/vendor do
+  owner 'deploy'
+  group 'www-data'
+  mode '0775'
+  action :create
+end
+
 execute "chmo-775" do
   command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod 775  #{deploy[:deploy_to]}/current/storage/logs"
   action :run
