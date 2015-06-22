@@ -16,7 +16,7 @@ node[:deploy].each do |application, deploy|
     recursive true
   end
 
-directory #{deploy[:deploy_to]}/current/vendor do
+directory "#{deploy[:deploy_to]}/current/vendor" do
   owner 'deploy'
   group 'www-data'
   mode '0775'
