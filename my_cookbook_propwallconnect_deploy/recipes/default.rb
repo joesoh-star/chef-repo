@@ -70,10 +70,10 @@ end
 execute "php artisan" do
   command "php #{deploy[:deploy_to]}/current artisan migrate"
   only_if do
-    if node[:opsworks][:layers]['Layer PHP App Server'] && node[:opsworks][:layers]['Layer PHP App Server'][:instances].empty?
+    if node[:opsworks][:layers]['php-app'] && node[:opsworks][:layers]['php-app'][:instances].empty?
        # no 'online' php servers --> we are the first one booting
        true
-    elsif node[:opsworks][:instance][:hostname] == node[:opsworks][:layers]['Layer PHP App Server'][:instances].keys.sort.first
+    elsif node[:opsworks][:instance][:hostname] == node[:opsworks][:layers]['php-app'][:instances].keys.sort.first
        # we are the first 'online' php-app server
        true
     else
