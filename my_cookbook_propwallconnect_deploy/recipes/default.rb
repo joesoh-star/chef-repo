@@ -67,6 +67,14 @@ composer_project "#{deploy[:deploy_to]}/current" do
     action :update
 end
 
+file "#{deploy[:deploy_to]}/current/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php" do
+  owner 'deploy'
+  group 'www-data'
+  mode '0755'
+end
+
+/srv/www/propwall_connect/releases/20150625065740/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php
+
 execute "php artisan" do
   command "php #{deploy[:deploy_to]}/current artisan migrate"
   only_if do
