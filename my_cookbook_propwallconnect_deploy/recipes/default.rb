@@ -73,8 +73,6 @@ file "#{deploy[:deploy_to]}/current/vendor/monolog/monolog/src/Monolog/Handler/S
   mode '0755'
 end
 
-/srv/www/propwall_connect/releases/20150625065740/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php
-
 execute "php artisan" do
   command "php #{deploy[:deploy_to]}/current artisan migrate"
   only_if do
