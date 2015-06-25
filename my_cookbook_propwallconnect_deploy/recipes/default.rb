@@ -13,7 +13,7 @@ node[:deploy].each do |application, deploy|
     owner 'deploy'
     group 'www-data'
     mode '0775' 
-    recursive true
+    action :create
   end
 
 directory "#{deploy[:deploy_to]}/current/vendor" do
@@ -24,7 +24,7 @@ directory "#{deploy[:deploy_to]}/current/vendor" do
 end
 
 execute "chmo-775" do
-  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod 775  #{deploy[:deploy_to]}/current/storage/logs"
+  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 775  #{deploy[:deploy_to]}/current/storage/logs"
   action :run
 end
 
@@ -65,12 +65,6 @@ composer_project "#{deploy[:deploy_to]}/current" do
     quiet true
     prefer_dist false
     action :update
-end
-
-file "#{deploy[:deploy_to]}/current/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php" do
-  owner 'deploy'
-  group 'www-data'
-  mode '0755'
 end
 
 execute "php artisan" do
