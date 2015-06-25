@@ -12,19 +12,19 @@ node[:deploy].each do |application, deploy|
   directory app_root do
     owner 'deploy'
     group 'www-data'
-    mode '0775' 
+    mode '0777' 
     action :create
   end
 
 directory "#{deploy[:deploy_to]}/current/vendor" do
   owner 'deploy'
   group 'www-data'
-  mode '0775'
+  mode '0777'
   action :create
 end
 
 execute "chmo-775" do
-  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 775  #{deploy[:deploy_to]}/current/storage/logs"
+  command "chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs"
   action :run
 end
 
