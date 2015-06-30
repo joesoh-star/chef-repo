@@ -16,6 +16,12 @@ node[:deploy].each do |application, deploy|
     recursive true
   end
 
+  directory "#{deploy[:deploy_to]}/current/carsifu-v2/vendor" do
+    owner 'deploy'
+    group 'www-data'
+    mode '0775' 
+  end
+
 #Add copy App variable to .env file
 template "#{deploy[:deploy_to]}/current/carsifu-v2/.env" do
   source "laravel_env.erb"
