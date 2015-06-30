@@ -32,6 +32,8 @@ composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
     dev false
     quiet true
     prefer_dist false
+    user "deploy"
+    group "www-data"
     action :install
 end
 
