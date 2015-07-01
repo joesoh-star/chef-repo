@@ -21,11 +21,11 @@ link "/etc/php5/cli/conf.d/20-mcrypt.ini" do
   to "/etc/php5/mods-available/mcrypt.ini"
 end
 
-file '/etc/php5/mods-available/remoteip.conf' do
-  content 'RemoteIPHeader X-Forwarded-For'
-  mode '0644'
-  owner 'root'
-  group 'root'
+file "/etc/php5/mods-available/remoteip.conf" do
+  content "RemoteIPHeader X-Forwarded-For"
+  mode "0644"
+  owner "root"
+  group "root"
 end 
 
 link "/etc/apache2/mods-enabled/remoteip.conf" do
