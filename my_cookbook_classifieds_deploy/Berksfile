@@ -1,1 +1,2 @@
 cookbook 'htpasswd', '~> 0.2.4'
+cookbook 'composer', '~> 2.1.0'
