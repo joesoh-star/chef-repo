@@ -6,6 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe "composer::default"
 node[:deploy].each do |application, deploy|
 
   app_root = "/srv/www/classifieds_carsifu/current/carsifu-v2/storage"
