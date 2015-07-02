@@ -24,7 +24,7 @@ directory "#{deploy[:deploy_to]}/current/vendor" do
 end
 
 execute "chmo-775" do
-  command "chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs"
+  command "chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs; #{deploy[:deploy_to]}/current/bootstrap/cache"
   action :run
 end
 
