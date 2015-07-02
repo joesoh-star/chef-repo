@@ -13,15 +13,15 @@ execute "a2enmod remoteip" do
   action :run
 end
 
-file "/etc/php5/mods-available/remoteip.conf" do
+file "/etc/apache2/mods-available/remoteip.conf" do
   content "RemoteIPHeader X-Forwarded-For"
   mode "0644"
   owner "root"
   group "root"
 end
 
-link "/etc/php5/mods-enabled/remoteip.conf" do
-  to "/etc/php5/mods-available/remoteip.conf"
+link "/etc/apache2/mods-enabled/remoteip.conf" do
+  to "/etc/apache2/mods-available/remoteip.conf"
 end
 
 execute "Restart Apache" do
