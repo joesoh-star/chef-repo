@@ -68,7 +68,7 @@ composer_project "#{deploy[:deploy_to]}/current" do
 end
 
 execute "php artisan" do
-  command "php #{deploy[:deploy_to]}/current artisan migrate"
+  command "php #{deploy[:deploy_to]}/current/artisan migrate"
   only_if do
     if node[:opsworks][:layers]['php-app'] && node[:opsworks][:layers]['php-app'][:instances].empty?
        # no 'online' php servers --> we are the first one booting
