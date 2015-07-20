@@ -34,7 +34,7 @@ template "#{deploy[:deploy_to]}/current/carsifu-v2/.env" do
 end
 
 # install composer.
-include_recipe "composer::default"
+#include_recipe "composer::default"
 
 directory "/root/.composer" do
   mode '775'
