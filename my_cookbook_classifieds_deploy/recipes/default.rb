@@ -93,7 +93,6 @@ execute "php artisan" do
     else
       # we are not the first one
       false
-    end
   end
 end
 
