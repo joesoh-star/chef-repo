@@ -55,8 +55,6 @@ composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
     action :install
 end
 
-<<<<<<< HEAD
-=======
 execute "php artisan" do
   command "php /srv/www/classifieds_carsifu/current/carsifu-v2/artisan migrate"
   only_if do
@@ -73,7 +71,6 @@ execute "php artisan" do
   end
 
 
->>>>>>> devel
 execute "chown" do
   command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
   action :run
