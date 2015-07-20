@@ -70,6 +70,7 @@ execute "php artisan" do
     end
   end
 
+
 execute "chown" do
   command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
   action :run
