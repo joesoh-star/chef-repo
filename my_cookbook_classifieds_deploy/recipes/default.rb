@@ -55,21 +55,6 @@ composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
     action :install
 end
 
-execute "php artisan" do
-  command "php /srv/www/classifieds_carsifu/current/carsifu-v2/artisan migrate"
-  only_if do
-    if node[:opsworks][:layers]['php-app'] && node[:opsworks][:layers]['php-app'][:instances].empty?
-       # no 'online' php servers --> we are the first one booting
-       true
-    elsif node[:opsworks][:instance][:hostname] == node[:opsworks][:layers]['php-app'][:instances].keys.sort.first
-       # we are the first 'online' php-app server
-       true
-    else
-      # we are not the first one
-      false
-    end
-  end
-
 execute "chown" do
   command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
   action :run
