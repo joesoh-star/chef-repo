@@ -34,7 +34,7 @@ template "#{deploy[:deploy_to]}/current/carsifu-v2/.env" do
 end
 
 # install composer.
-#include_recipe "composer::default"
+include_recipe "composer::default"
 
 directory "/root/.composer" do
   mode '775'
@@ -78,8 +78,13 @@ execute "php artisan" do
   end
 end
 
+file "/srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
+  owner "deploy"
+  group "www-data"
+end
+
 execute "chown" do
-  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor; chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
+  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor"
   action :run
 end
 
