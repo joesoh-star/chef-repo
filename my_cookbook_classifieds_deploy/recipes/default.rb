@@ -45,12 +45,12 @@ template "/root/.composer/auth.json" do
   source "composer_auth_json.erb"
 end
 
-directory "/srv/www/classifieds_carsifu/current/carsifu-v2/vendor" do
-  owner 'deploy'
-  group 'www-data'
-  mode '0777'
-  action :create
-end
+#directory "/srv/www/classifieds_carsifu/current/carsifu-v2/vendor" do
+#  owner 'deploy'
+#  group 'www-data'
+#  mode '0777'
+#  action :create
+#end
 
 #install project vendors
 composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
@@ -78,15 +78,15 @@ execute "php artisan" do
   end
 end
 
-file "/srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock" do
-  owner "deploy"
-  group "www-data"
-end
+#file "/srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock" do
+#  owner "deploy"
+#  group "www-data"
+#end
 
-execute "chown" do
-  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor"
-  action :run
-end
+#execute "chown" do
+#  command "chown -R deploy:www-data srv/www/classifieds_carsifu/current/carsifu-v2/vendor"
+#  action :run
+#end
 
 execute "chmod-775" do
   command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs"
