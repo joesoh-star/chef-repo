@@ -45,6 +45,13 @@ template "/root/.composer/auth.json" do
   source "composer_auth_json.erb"
 end
 
+directory "/srv/www/classifieds_carsifu/current/carsifu-v2/vendor" do
+  owner 'deploy'
+  group 'www-data'
+  mode '0777'
+  action :create
+end
+
 #install project vendors
 composer_project "/srv/www/classifieds_carsifu/current/carsifu-v2" do
     dev false
