@@ -78,7 +78,7 @@ execute "php artisan" do
   end
 end
 
-file "/srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock"
+file "/srv/www/classifieds_carsifu/current/carsifu-v2/composer.lock" do
   owner "deploy"
   group "www-data"
 end
