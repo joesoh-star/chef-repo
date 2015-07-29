@@ -28,8 +28,8 @@ execute "chmo-775" do
   action :run
 end
 
-execute "Add Newrelic AppName" do
-  command "echo newrelic.appname = #{deploy[0][:domains]} >> #{deploy[:deploy_to]}/current/.htaccess"
+node[:deploy][:domains].each  do |domain|
+  command "echo newrelic.appname = #{domain} >> #{deploy[:deploy_to]}/current/.htaccess"
 end
 
 #Add php5-mcrypt to cli/conf.d
