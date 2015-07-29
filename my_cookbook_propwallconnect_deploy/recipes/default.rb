@@ -28,6 +28,10 @@ execute "chmo-775" do
   action :run
 end
 
+execute "Add Newrelic AppName" do
+  command "echo newrelic.appname = "#{deploy[:domains]}" >> #{deploy[:deploy_to]}/current/.htaccess"
+end
+
 #Add php5-mcrypt to cli/conf.d
 execute "add mcrypt symlink" do
   command "ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini"
