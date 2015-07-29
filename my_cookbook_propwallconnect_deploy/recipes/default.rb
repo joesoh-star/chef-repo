@@ -28,7 +28,7 @@ execute "chmo-775" do
   action :run
 end
 
-node[:domains].each  do |domain|
+node[:deploy][:domains].each  do |domain|
   command "echo newrelic.appname = #{domain} >> #{deploy[:deploy_to]}/current/.htaccess"
 end
 
