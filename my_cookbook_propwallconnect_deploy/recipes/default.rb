@@ -31,7 +31,7 @@ end
 #node[:deploy][:domains].each  do |domain|
 #  command "echo newrelic.appname = #{domain} >> #{deploy[:deploy_to]}/current/.htaccess"
 #end
-execute "add Newrelic Appname"
+execute "add Newrelic Appname" do
   command "echo newrelic.appname = #{deploy[:domains].first} >> #{deploy[:deploy_to]}/current/.htaccess"
   action :run
 end
@@ -90,4 +90,5 @@ execute "php artisan" do
     end
   end
 
+ end
 end
