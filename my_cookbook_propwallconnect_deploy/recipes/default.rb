@@ -32,7 +32,8 @@ end
 #  command "echo newrelic.appname = #{domain} >> #{deploy[:deploy_to]}/current/.htaccess"
 #end
 execute "add Newrelic Appname" do
-  command "echo newrelic.appname = #{deploy[:domains].first} >> #{deploy[:deploy_to]}/current/.htaccess"
+#  command "echo php_value newrelic.appname = #{deploy[:domains].first} >> #{deploy[:deploy_to]}/current/.htaccess"
+  command %Q[echo php_value newrelic.appname = #{deploy[:domains].first} >> #{deploy[:deploy_to]}/current/.htaccess]
   action :run
 end
 
