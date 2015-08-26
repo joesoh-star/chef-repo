@@ -68,7 +68,7 @@ composer_project "#{deploy[:deploy_to]}/current" do
     dev true
     quiet true
     prefer_dist false
-    action :update
+#    action :update
 end
 
 execute "php artisan" do
