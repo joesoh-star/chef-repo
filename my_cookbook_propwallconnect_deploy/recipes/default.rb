@@ -91,5 +91,3 @@ execute "php artisan" do
   end
 
 end
-
-end
