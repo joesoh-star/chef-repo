@@ -23,7 +23,7 @@ directory "#{deploy[:deploy_to]}/current/vendor" do
   action :create
 end
 
-execute "chmo-775" do
+execute "chmod-775" do
   command "chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs; chmod -R 775 #{deploy[:deploy_to]}/current/bootstrap/cache"
   action :run
 end
@@ -74,6 +74,11 @@ composer_project "#{deploy[:deploy_to]}/current" do
     quiet true
     prefer_dist false
     action :install
+end
+
+execute "chown" do
+  command "chown -R deploy:www-data #{deploy[:deploy_to]}/current/vendor"
+  action:run
 end
 
 execute "php artisan" do
