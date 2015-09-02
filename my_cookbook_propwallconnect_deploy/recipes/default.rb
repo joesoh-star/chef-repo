@@ -16,12 +16,12 @@ node[:deploy].each do |application, deploy|
     action :create
   end
 
-directory "#{deploy[:deploy_to]}/current/vendor" do
-  owner 'deploy'
-  group 'www-data'
-  mode '0777'
-  action :create
-end
+#directory "#{deploy[:deploy_to]}/current/vendor" do
+#  owner 'deploy'
+#  group 'www-data'
+#  mode '0777'
+#  action :create
+#end
 
 execute "chmod-775" do
   command "chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs; chmod -R 775 #{deploy[:deploy_to]}/current/bootstrap/cache"
@@ -76,10 +76,10 @@ composer_project "#{deploy[:deploy_to]}/current" do
     action :install
 end
 
-execute "chown" do
-  command "chown -R deploy:www-data #{deploy[:deploy_to]}/current/vendor"
-  action:run
-end
+#execute "chown" do
+#  command "chown -R deploy:www-data #{deploy[:deploy_to]}/current/vendor"
+#  action:run
+#end
 
 execute "php artisan" do
   command "php #{deploy[:deploy_to]}/current/artisan migrate"
