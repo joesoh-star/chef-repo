@@ -24,7 +24,7 @@ node[:deploy].each do |application, deploy|
 #end
 
 execute "chmod-775" do
-  command "chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs; chmod -R 775 #{deploy[:deploy_to]}/current/bootstrap/cache"
+  command "chmod -R 775  #{deploy[:deploy_to]}/current/storage/app; chmod -R 777  #{deploy[:deploy_to]}/current/storage/framework; chmod -R 777  #{deploy[:deploy_to]}/current/storage/logs; chmod -R 775 #{deploy[:deploy_to]}/current/bootstrap/cache"
   action :run
 end
 
