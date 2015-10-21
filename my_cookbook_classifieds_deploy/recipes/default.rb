@@ -93,4 +93,9 @@ execute "chmod-775" do
   action :run
 end
 
+execute "chmod-664" do
+	command "chmod 664 /srv/www/carsifu/current/automania-v2/.htaccess"
+	action :run
+end
+
 end
