@@ -8,5 +8,5 @@ RewriteRule . /index.php [L]
 
 RewriteCond %{HTTP_HOST} ^propwall.com [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.propwall.com [NC]
-RewriteRule ^(.*)$ http://<%= @params[:url_name]>/$1 [L,R=301,NC]
+RewriteRule ^(.*)$ http://<%= @params[:url_name] %>/$1 [L,R=301,NC]
 </IfModule>
