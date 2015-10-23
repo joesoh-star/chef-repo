@@ -77,6 +77,7 @@ end
 #Description: To enable url rewrite from *.propwall.com to the proper propwall.my stacks
 template "#{deploy[:deploy_to]}/current/.htaccess" do
 	source "htaccess.erb"
+	variables :url_name => deploy[:domains].first
 end
 
 end
