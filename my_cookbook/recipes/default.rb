@@ -74,4 +74,9 @@ composer_project "#{deploy[:deploy_to]}/current" do
     action :install
 end
 
+#Description: To enable url rewrite from *.propwall.com to the proper propwall.my stacks
+template "#{deploy[:deploy_to]}/current/.htaccess" do
+	source "htaccess.erb"
+end
+
 end
