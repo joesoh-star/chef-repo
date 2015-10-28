@@ -2,7 +2,7 @@
 # For Development Environment Only
 
 execute "intall-mailcatcher" do
-	command "gem install mailcatcher"
+	command "apt-get install libsqlite3-dev; gem install mailcatcher"
 	action :run
 end
 
