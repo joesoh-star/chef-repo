@@ -13,13 +13,3 @@ execute '/usr/sbin/php5enmod intl' do
   action :nothing
   only_if { platform?('ubuntu') && node['platform_version'].to_f >= 14.04 && ::File.exists?('/usr/sbin/php5enmod') }
 end
-
-# add htpasswd user.
-include_recipe "htpasswd::default"
-
-htpasswd "/etc/apache2/.htpassword" do
-  user node[:apache][:htpasswd_user] 
-  password node[:apache][:htpasswd_passwd] 
-  type "sha1"
-  action :overwrite
-end
