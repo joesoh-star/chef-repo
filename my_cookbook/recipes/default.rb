@@ -7,9 +7,19 @@
 # All rights reserved - Do Not Redistribute
 #
 node[:deploy].each do |application, deploy|
+
   app_root = "#{deploy[:deploy_to]}/current/wp-content/cache"
-  execute "chmod -R g+rw #{app_root}" do
+  directory app_root do
+    owner 'deploy'
+    group 'www-data'
+    mode '0775' 
+    action :create 
   end
+
+#Commented by K - 20151109
+#  app_root = "#{deploy[:deploy_to]}/current/wp-content/cache"
+#  execute "chmod -R g+rw #{app_root}" do
+#  end
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
   execute "chmod -R g+rw #{app_root}" do
@@ -58,13 +68,14 @@ node[:deploy].each do |application, deploy|
 #Enable cache for beta and production ENV
 #
 # "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php" 
+#Commented out by K - 20151109
 #  env "devops" do
-    cookbook_file "wp-cache-config.php" do
-      owner "www-data"
-      group "www-data"
-      mode "0664"
-      path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
-    end
+#    cookbook_file "wp-cache-config.php" do
+#      owner "www-data"
+#      group "www-data"
+#      mode "0664"
+#      path  "#{deploy[:deploy_to]}/current/wp-content/wp-cache-config.php"
+#    end
 
 #install Composer project vendors
 composer_project "#{deploy[:deploy_to]}/current" do
