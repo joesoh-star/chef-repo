@@ -1,4 +1,4 @@
-template "/etc/apache2/mods-enabled/mpm_prefork.conf" do
+template "/etc/apache2/mods-available/mpm_prefork.conf" do
 	source "mpm_prefork.conf.erb"
 end
 
