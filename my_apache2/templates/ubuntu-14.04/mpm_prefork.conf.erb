@@ -6,9 +6,9 @@
 # MaxConnectionsPerChild: maximum number of requests a server process serves
 
 <IfModule mpm_prefork_module>
-        StartServers            20
+        StartServers            32
         MinSpareServers         2
         MaxSpareServers         2
-        MaxRequestWorkers       30
+        MaxRequestWorkers       32
         MaxConnectionsPerChild   100000
 </IfModule>
