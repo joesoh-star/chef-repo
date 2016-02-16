@@ -38,3 +38,9 @@ datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
 file = /var/log/apache2/propwall-error.log
 log_stream_name = <%= node[:opsworks][:instance][:hostname] %>-error
+
+[<%= node[:opsworks][:stack][:name] %>-auth]
+datetime_format = [%Y-%m-%d %H:%M:%S]
+log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
+file = /var/log/auth.log
+log_stream_name = <%= node[:opsworks][:instance][:hostname] %>-auth
