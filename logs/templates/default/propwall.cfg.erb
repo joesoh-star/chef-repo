@@ -43,4 +43,4 @@ log_stream_name = <%= node[:opsworks][:instance][:hostname] %>-error
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
 file = /var/log/auth.log
-log_stream_name = <%= node[:opsworks][:instance][:hostname] %>-auth
+log_stream_name = combined-auth
