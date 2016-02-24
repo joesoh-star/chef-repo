@@ -23,7 +23,7 @@ node[:deploy].each do |application, deploy|
 	end
 	
 	execute "restart-daemon" do
-		command %Q[php #{deploy[:deploy_to]}/current/artisan queue:restart]
+		command %Q[php #{deploy[:deploy_to]}/current/carsifu-v2/artisan queue:restart]
 		action :run
 	end
 end
