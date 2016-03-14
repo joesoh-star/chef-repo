@@ -23,7 +23,7 @@ end
 template "/etc/supervisor/supervisord.conf" do
 	source "supervisord.conf.erb"
 	variables(
-	email_address => node[:my_supervisord][:email_address]
+	:email_address => node['my_supervisord']['email_address']
 	)
 	action :overwrite
 end
