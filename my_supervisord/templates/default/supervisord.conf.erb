@@ -28,5 +28,5 @@ serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket
 files = /etc/supervisor/conf.d/*.conf
 
 [eventlistener:crashmail]
-command=/usr/local/bin/crashmail -a -m <%= @params[:email_address] %> 
+command=/usr/local/bin/crashmail -a -m <%= @email_address %> 
 events=PROCESS_STATE
