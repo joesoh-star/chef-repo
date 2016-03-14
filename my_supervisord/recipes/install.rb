@@ -25,5 +25,5 @@ template "/etc/supervisor/supervisord.conf" do
 	variables(
 	:email_address => node['my_supervisord']['email_address']
 	)
-	action :overwrite
+	action :create
 end
