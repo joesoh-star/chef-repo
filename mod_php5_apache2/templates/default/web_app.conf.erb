@@ -32,7 +32,7 @@
 
   LogLevel <%= node[:apache][:log_level] %>
   ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
-  CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
+  CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log leapache
   CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-ganglia.log ganglia
 
   FileETag none
