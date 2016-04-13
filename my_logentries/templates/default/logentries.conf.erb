@@ -1,0 +1,19 @@
+#
+# Logentries Token-based Logging Setting
+#
+
+$Modload imfile
+
+$InputFileName <%= @lelogfile %>
+$InputFileTag Apache_Access
+$InputFileStateFile Apache_Access_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+# Only entered once in case of following multiple files
+# This will poll the file every 10 seconds
+$InputFilePollInterval 10
+$template LogentriesFormat,"<%= @letoken %> %HOSTNAME% %syslogtag%%msg%\n"
+
+*.* @@data.logentries.com:80;LogentriesFormat
