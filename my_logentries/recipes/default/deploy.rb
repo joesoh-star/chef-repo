@@ -10,3 +10,8 @@ template "/etc/rsyslog.d/logentries.conf" do
 	)
 	action :create
 end
+
+execute "restart-rsyslog" do
+	command "service rsyslog restart"
+	action :run
+end
