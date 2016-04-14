@@ -2,6 +2,8 @@
 # Logentries rsyslog entries
 #
 
+node[:deploy].each do |application, deploy|
+
 template "/etc/rsyslog.d/logentries.conf" do
 	source "logentries.conf.erb"
 	variables(
