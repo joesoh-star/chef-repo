@@ -40,4 +40,13 @@ $template LogentriesErrorFormat,"<%= @le_error_token %> %HOSTNAME% %syslogtag%%m
 $template LogentriesAuthFormat,"<%= @le_auth_token %> %HOSTNAME% %syslogtag%%msg%\n"
 $template LogentriesDebugFormat,"<%= @le_debug_token %> %HOSTNAME% %syslogtag%%msg%\n"
 
-*.* @@data.logentries.com:80;LogentriesFormat
+if $programname == 'Apache_Access' then @@data.logentries.com:80;LogentriesFormat
+&~
+if $programname == 'Apache_Error' then @@data.logentries.com:80;LogentriesErrorFormat
+&~
+if $programname == 'Auth' then @@data.logentries.com:80;LogentriesAuthFormat
+&~
+if $programname == 'debug' then @@data.logentries.com:80;LogentriesDebugFormat
+&~
+
+#*.* @@data.logentries.com:80;LogentriesFormat
