@@ -4,9 +4,30 @@
 
 $Modload imfile
 
-$InputFileName <%= @lelogfile %>
+$InputFileName <%= @le_access %>
 $InputFileTag Apache_Access
 $InputFileStateFile Apache_Access_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+$InputFileName <%= @le_error %>
+$InputFileTag Apache_Error
+$InputFileStateFile Apache_Error_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+$InputFileName <%= @le_auth %>
+$InputFileTag Auth
+$InputFileStateFile Auth_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+$InputFileName <%= @le_debug %>
+$InputFileTag debug
+$InputFileStateFile debug_file
 $InputFileSeverity info
 $InputFileFacility local7
 $InputRunFileMonitor
@@ -14,6 +35,9 @@ $InputRunFileMonitor
 # Only entered once in case of following multiple files
 # This will poll the file every 10 seconds
 $InputFilePollInterval 10
-$template LogentriesFormat,"<%= @letoken %> %HOSTNAME% %syslogtag%%msg%\n"
+$template LogentriesFormat,"<%= @le_access_token %> %HOSTNAME% %syslogtag%%msg%\n"
+$template LogentriesErrorFormat,"<%= @le_error_token %> %HOSTNAME% %syslogtag%%msg%\n"
+$template LogentriesAuthFormat,"<%= @le_auth_token %> %HOSTNAME% %syslogtag%%msg%\n"
+$template LogentriesDebugFormat,"<%= @le_debug_token %> %HOSTNAME% %syslogtag%%msg%\n"
 
 *.* @@data.logentries.com:80;LogentriesFormat
