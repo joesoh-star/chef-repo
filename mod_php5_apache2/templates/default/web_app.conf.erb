@@ -31,6 +31,7 @@
   </Directory>
 
   SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
+  SetEnvIf Remote_Addr "::1" dontlog
   
   LogLevel <%= node[:apache][:log_level] %>
   ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
