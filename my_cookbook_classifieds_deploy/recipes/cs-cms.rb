@@ -9,7 +9,7 @@ execute "chmod-775" do
 end
 
 execute "chmod-664" do
-	command "chmod 664 #{deploy[:deploy_to]}/.htaccess"
+	command "chmod 664 #{deploy[:deploy_to]}/current/.htaccess"
 	action :run
 end
 
