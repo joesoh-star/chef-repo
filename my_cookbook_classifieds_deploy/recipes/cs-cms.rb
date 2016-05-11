@@ -14,7 +14,7 @@ execute "chmod-664" do
 end
 
 execute "add Newrelic Appname" do
-  command %Q[echo php_value newrelic.appname "#{deploy[:domains].first}" >> #{deploy[:deploy_to]}/current/public/.htaccess]
+  command %Q[echo php_value newrelic.appname "#{deploy[:domains].first}" >> #{deploy[:deploy_to]}/current/.htaccess]
   action :run
 end
 
