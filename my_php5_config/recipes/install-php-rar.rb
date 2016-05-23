@@ -4,7 +4,6 @@
 # by: Kien [20160523]
 #
 
-execute "install rar" do
-	command "pecl install rar"
-	action :run
+php_pear "rar" do
+	action :install
 end
