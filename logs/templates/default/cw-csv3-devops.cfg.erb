@@ -42,13 +42,13 @@ log_stream_name = devops_carsifu_v3-error
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
 file = /var/log/apache2/devops_classifieds_carsifu-access.log
-log_stream_name = devops_classifieds_carsifu-access-access
+log_stream_name = devops_classifieds_carsifu-access
 
 [<%= node[:opsworks][:stack][:name] %>-error]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
 file = /var/log/apache2/devops_classifieds_carsifu-error.log
-log_stream_name = devops_classifieds_carsifu-error-error
+log_stream_name = devops_classifieds_carsifu-error
 
 [<%= node[:opsworks][:stack][:name] %>-auth]
 datetime_format = [%Y-%m-%d %H:%M:%S]
