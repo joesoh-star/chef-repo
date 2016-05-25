@@ -29,29 +29,29 @@ state_file = /var/awslogs/state/agent-state
 [<%= node[:opsworks][:stack][:name] %>-access]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = /var/log/apache2/devops_carsifu_v3-access.log
-log_stream_name = devops_carsifu_v3-access
+file = <%= @access_log_file_01 %>
+log_stream_name = <%= @access_log_stream_01 %>
 
 [<%= node[:opsworks][:stack][:name] %>-error]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = /var/log/apache2/devops_carsifu_v3-error.log
-log_stream_name = devops_carsifu_v3-error
+file = <%= @error_log_file_01 %>
+log_stream_name = <%= @error_log_stream_01 %>
 
 [<%= node[:opsworks][:stack][:name] %>-access]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = /var/log/apache2/devops_classifieds_carsifu-access.log
-log_stream_name = devops_classifieds_carsifu-access
+file = <%= @access_log_file_02 %>
+log_stream_name = <%= @access_log_stream_02 %>
 
 [<%= node[:opsworks][:stack][:name] %>-error]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = /var/log/apache2/devops_classifieds_carsifu-error.log
-log_stream_name = devops_classifieds_carsifu-error
+file = <%= @error_log_file_02 %>
+log_stream_name = <%= @error_log_stream_02 %>
 
 [<%= node[:opsworks][:stack][:name] %>-auth]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = /var/log/auth.log
-log_stream_name = combined-auth
+file = <%= @auth_log_file %>
+log_stream_name = <%= @auth_log_stream %>
