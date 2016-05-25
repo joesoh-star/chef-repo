@@ -38,18 +38,6 @@ log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
 file = <%= @error_log_file_01 %>
 log_stream_name = <%= @error_log_stream_01 %>
 
-[<%= node[:opsworks][:stack][:name] %>-access]
-datetime_format = [%Y-%m-%d %H:%M:%S]
-log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = <%= @access_log_file_02 %>
-log_stream_name = <%= @access_log_stream_02 %>
-
-[<%= node[:opsworks][:stack][:name] %>-error]
-datetime_format = [%Y-%m-%d %H:%M:%S]
-log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
-file = <%= @error_log_file_02 %>
-log_stream_name = <%= @error_log_stream_02 %>
-
 [<%= node[:opsworks][:stack][:name] %>-auth]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
