@@ -29,5 +29,5 @@ node[:deploy].each do |application, deploy|
 		when "carsifu_v3-cms-beta"
 		
 		else
-		
+	end	
 end
