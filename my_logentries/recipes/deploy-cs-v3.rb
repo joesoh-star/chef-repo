@@ -93,6 +93,7 @@ node[:deploy].each do |application, deploy|
 						:le_auth => node['logs']['auth_log_file'],
 						:le_auth_token => node['my_logentries']['le_auth_token']		
 					)
-			action :create
+				action :create
 			end	
+	end
 end
