@@ -1,0 +1,44 @@
+#
+# Logentries Token-based Logging Setting
+#
+
+$Modload imfile
+
+$InputFileName <%= @le_access_01 %>
+$InputFileTag Apache_Access01
+$InputFileStateFile Apache_Access_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+$InputFileName <%= @le_error_01 %>
+$InputFileTag Apache_Error01
+$InputFileStateFile Apache_Error_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+$InputFileName <%= @le_auth %>
+$InputFileTag Auth
+$InputFileStateFile Auth_file
+$InputFileSeverity info
+$InputFileFacility local7
+$InputRunFileMonitor
+
+
+# Only entered once in case of following multiple files
+# This will poll the file every 10 seconds
+$InputFilePollInterval 10
+$template le_access_01,"<%= @le_access_token_01 %> %HOSTNAME% %syslogtag%%msg%\n"
+$template le_error_01,"<%= @le_error_token_01 %> %HOSTNAME% %syslogtag%%msg%\n"
+$template LogentriesAuthFormat,"<%= @le_auth_token %> %HOSTNAME% %syslogtag%%msg%\n"
+
+if $programname == 'Apache_Access01' then @@data.logentries.com:80;le_access_01
+&~
+if $programname == 'Apache_Error01' then @@data.logentries.com:80;le_error_01
+&~
+if $programname == 'Auth' then @@data.logentries.com:80;LogentriesAuthFormat
+&~
+
+
+#*.* @@data.logentries.com:80;LogentriesFormat
