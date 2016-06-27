@@ -96,4 +96,8 @@ node[:deploy].each do |application, deploy|
 				action :create
 			end	
 	end
+	
+	service "rsyslog" do
+		action :restart
+	end
 end
