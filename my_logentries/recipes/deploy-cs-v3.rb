@@ -97,7 +97,8 @@ node[:deploy].each do |application, deploy|
 			end	
 	end
 	
-	service "rsyslog" do
-		action :restart
+	execute "restart-rsyslog" do
+		command "service rsyslog restart"
+		action :run
 	end
 end
