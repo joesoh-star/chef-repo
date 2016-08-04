@@ -88,10 +88,10 @@ end
 #  action :run
 #end
 
-#execute "chmod-775" do
-#  command "chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/cache; chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/uploads; #chmod 775  /srv/www/carsifu/current/automania-v2/wp-content/w3tc-config; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/framework; chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs"
-#  action :run
-#end
+execute "chmod-775" do
+  command "chmod 775  -R /srv/www/classifieds_carsifu/current/carsifu-v2/storage/logs"
+  action :run
+end
 
 #execute "chmod-664" do
 #	command "chmod 664 /srv/www/carsifu/current/automania-v2/.htaccess"
