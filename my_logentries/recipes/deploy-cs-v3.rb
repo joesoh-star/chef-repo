@@ -57,7 +57,7 @@ node[:deploy].each do |application, deploy|
 					)
 				action :create
 			end
-		when "carsifu_v3-cms-beta", "PropwallConnect-Develop Stack-Ubuntu"
+		when "carsifu_v3-cms-beta", "PropwallConnect-Develop Stack-Ubuntu", "Propwall-API-Beta"
 			template "/etc/rsyslog.d/logentries.conf" do
 				source "logentries.conf.csv3.cms-beta.erb"
 					variables(

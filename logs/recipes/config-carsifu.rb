@@ -61,7 +61,7 @@ case node[:opsworks][:stack][:name]
 			group "root"
 			mode 0644
 		end
-	when "carsifu_v3-cms-beta", "PropwallConnect-Develop Stack-Ubuntu"
+	when "carsifu_v3-cms-beta", "PropwallConnect-Develop Stack-Ubuntu", "Propwall-API-Beta"
 		template "/tmp/cwlogs.cfg" do
 			cookbook "logs"
 			source "cw-csv3-cms-beta.cfg.erb"
