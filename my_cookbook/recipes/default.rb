@@ -25,6 +25,10 @@ node[:deploy].each do |application, deploy|
   app_root = "#{deploy[:deploy_to]}/current/wp-config*"
   execute "chmod u=rwx,g=r,o-rwx #{app_root}" do
   end
+  
+  app_root = "#{deploy[:deploy_to]}/current/xmlrpc.php"
+  execute "chmod u=rwx,g=r,o-rwx #{app_root}" do
+  end
 
   app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
   execute "chmod -R g+rw #{app_root}" do
