@@ -8,8 +8,8 @@ execute "chmod-775" do
   action :run
 end
 
-execute "chmod-664" do
-	command "chmod 664 #{deploy[:deploy_to]}/current/.htaccess"
+execute "chmod-640" do
+	command "chmod 640 #{deploy[:deploy_to]}/current/.htaccess; chmod 640 #{deploy[:deploy_to]}/current/xmlrpc.php; chmod 640 #{deploy[:deploy_to]}/current/wp-config*"
 	action :run
 end
 
