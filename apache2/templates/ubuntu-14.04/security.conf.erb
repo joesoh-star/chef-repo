@@ -23,8 +23,8 @@
 # Set to one of:  Full | OS | Minimal | Minor | Major | Prod
 # where Full conveys the most information, and Prod the least.
 #ServerTokens Minimal
-ServerTokens <%= node[:apache][:servertokens] %>
-#ServerTokens Full
+#ServerTokens <%= node[:apache][:servertokens] %>
+ServerTokens Full
 
 #
 # Optionally add a line containing the server version and virtual host
@@ -36,7 +36,7 @@ ServerTokens <%= node[:apache][:servertokens] %>
 #ServerSignature Off
 #ServerSignature <%= node[:apache][:serversignature] %>
 
-SecServerSignature Microsoft IIS7.5
+SecServerSignature "Microsoft-IIS/7.5"
 
 #
 # Allow TRACE method
