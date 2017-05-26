@@ -8,7 +8,7 @@ node[:deploy].each do |application, deploy|
 	end
 
 	execute "insert-conf" do
-		command %Q[echo "[program:#{deploy[:domains].first}]\ncommand=php #{deploy[:deploy_to]}/current/carsifu-v2/artisan queue:work --sleep=3 --tries=3 --daemon\nautostart=true\nautorestart=true\nnumprocs=20\nprocess_name=%(program_name)s_%(process_num)02d\nstderr_logfile=/var/log/supervisor/#{deploy[:domains].first}.err.log\nstdout_logfile=/var/log/supervisor/#{deploy[:domains].first}.out.log\nuser=www-data\n" > /etc/supervisor/conf.d/#{deploy[:domains].first}.conf]
+		command %Q[echo "[program:#{deploy[:domains].first}]\ncommand=php #{deploy[:deploy_to]}/current/carsifu-v2/artisan queue:work --sleep=3 --tries=3 --daemon\nautostart=true\nautorestart=true\nnumprocs=15\nprocess_name=%(program_name)s_%(process_num)02d\nstderr_logfile=/var/log/supervisor/#{deploy[:domains].first}.err.log\nstdout_logfile=/var/log/supervisor/#{deploy[:domains].first}.out.log\nuser=www-data\n" > /etc/supervisor/conf.d/#{deploy[:domains].first}.conf]
 		action :run
 	end
 
