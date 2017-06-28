@@ -13,7 +13,7 @@
   </Directory>
 
   <% if @params[:name] == 'carsifu'-%>
-# Custom - Add redirection for carsifu classifieds 
+# Custom - Add redirection for carsifu classifieds
   <Directory <%= @params[:docroot] %>classifieds>
     RewriteEngine on
     RewriteRule ^(.*)$ http://<%= node[:apache][:classifieds_url] %>/$1 [P]
@@ -32,7 +32,8 @@
 
   SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
   SetEnvIf Remote_Addr "::1" dontlog
-  
+  SetEnvIf Request_URI "^/elb-beat.html$" dontlog
+
   LogLevel <%= node[:apache][:log_level] %>
   ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
   CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log leapache env=!dontlog
