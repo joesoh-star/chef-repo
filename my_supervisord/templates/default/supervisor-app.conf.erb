@@ -1,0 +1,9 @@
+[program:<% @appname %>]
+command=php <% @apppath %>/<% @commandpath %> queue:work --sleep=3 --tries=3 --daemon
+autostart=true
+autorestart=true
+numprocs= <% @numprocs %>
+process_name=%(program_name)s_%(process_num)02d
+stderr_logfile=/var/log/supervisor/<% @appname %>.err.log
+stdout_logfile=/var/log/supervisor/<% @appname %>.out.log
+user=www-data
