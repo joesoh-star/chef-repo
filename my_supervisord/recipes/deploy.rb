@@ -15,12 +15,12 @@ node[:deploy].each do |application, deploy|
 
 	template "/etc/supervisor/conf.d/#{app_name}.conf]" do
 		source "supervisor-app.conf.erb"
-		variables (
-			:commandpath => node['my_supervisord']['commandpath'],
-			:numprocs => node['my_supervisord']['numprocs'],
-			:appname => "#{app_name}",
-			:apppath => "#{deploy[:deploy_to]}"
-		)
+			variables(
+				:commandpath => node['my_supervisord']['commandpath'],
+				:numprocs => node['my_supervisord']['numprocs'],
+				:appname => "#{app_name}",
+				:apppath => "#{deploy[:deploy_to]}"
+			)
 	end
 
 	execute "supervisor-reread-config" do
