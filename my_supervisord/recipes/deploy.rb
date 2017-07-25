@@ -13,7 +13,7 @@ node[:deploy].each do |application, deploy|
 #	end
 	app_name = "#{deploy[:domains].first}"
 
-	template "/etc/supervisor/conf.d/#{app_name}.conf]" do
+	template "/etc/supervisor/conf.d/#{app_name}.conf" do
 		source "supervisor-app.conf.erb"
 			variables(
 				:commandpath => node['my_supervisord']['commandpath'],
