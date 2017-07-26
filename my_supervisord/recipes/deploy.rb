@@ -2,7 +2,7 @@
 #For laravel job server only
 
 node[:deploy].each do |application, deploy|
-	
+
 	app_name = "#{deploy[:domains].first}"
 
 	template "/etc/supervisor/conf.d/#{app_name}.conf" do
@@ -26,7 +26,7 @@ node[:deploy].each do |application, deploy|
 	end
 
 	execute "restart-daemon" do
-		command %Q[php #{deploy[:deploy_to]}/current/artisan queue:restart]
+		command %Q[php #{deploy[:deploy_to]}/#{commandpath}/artisan queue:restart]
 		action :run
 	end
 end
