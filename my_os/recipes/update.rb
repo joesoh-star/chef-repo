@@ -4,7 +4,7 @@
 
 if platform_family?('debian')
 	execute "update os" do
-		command "apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && apt-get -y autoremove"
+		command "apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::='"'--force-confdef'"' -o Dpkg::Options::='"'--force-confold'"' && apt-get -y autoremove"
 	action :run
 	end
 end
